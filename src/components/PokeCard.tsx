@@ -13,15 +13,8 @@ export default function PokeCard({ name, url }: Pokemon) {
       cursor-pointer
     "
     >
-      <h2
-        className="
-        text-lg sm:text-xl
-        md:text-2xl font-extrabold text-slate-900 
-        capitalize tracking-tight
-        mb-4
-      "
-      >
-        {name}
+      <h2 className="bg-red-600 text-white px-4 py-1 rounded-full text-lg sm:text-xl font-extrabold capitalize tracking-tight mb-4 inline-block shadow-sm">
+        {name + ' Nº ' + url.split('/')[6]}
       </h2>
       <div
         className="
@@ -32,7 +25,7 @@ export default function PokeCard({ name, url }: Pokemon) {
       "
       >
         <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url.split('/')[6]}.png`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${url.split('/')[6]}.png`}
           alt={`Imagem do Pokémon ${name}`}
           className="max-h-full max-w-full object-contain"
           loading="lazy"
