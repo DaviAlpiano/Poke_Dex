@@ -1,11 +1,11 @@
 export type PokeContextType = {
-  pokemonList: Pokemons[];
+  pokemonList: Pokemon[];
   loading: boolean;
-  setPokemonList: (list: Pokemons[]) => void;
+  setPokemonList: (list: Pokemon[]) => void;
   setLoading: (value: boolean) => void;
 };
 
-export type Pokemons = {
+export type Pokemon = {
   name: string;
   url: string;
 };

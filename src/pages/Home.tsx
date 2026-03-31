@@ -1,13 +1,16 @@
+import PokeCard from '../components/PokeCard';
 import { usePoke } from '../contexts/usePoke';
-import type { Pokemons } from '../types/api';
+import type { Pokemon } from '../types/api';
 
 export default function Home() {
   const { pokemonList } = usePoke();
   return (
-    <div>
-      {pokemonList.map((pokemon: Pokemons) => (
-        <div key={pokemon.name}>{pokemon.name}</div>
-      ))}
-    </div>
+    <main className="p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {pokemonList.map((pokemon: Pokemon) => (
+          <PokeCard name={pokemon.name} url={pokemon.url} key={pokemon.name} />
+        ))}
+      </div>
+    </main>
   );
 }

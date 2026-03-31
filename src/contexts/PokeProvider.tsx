@@ -1,9 +1,9 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import PokeContext from './PokeContext';
-import type { Pokemons } from '../types/api';
+import type { Pokemon } from '../types/api';
 
 export function PokeProvider({ children }: { children: ReactNode }) {
-  const [pokemonList, setPokemonList] = useState<Pokemons[]>(() => {
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>(() => {
     const cached = localStorage.getItem('@PokeSite:data');
     return cached ? JSON.parse(cached) : [];
   });
@@ -12,8 +12,12 @@ export function PokeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const fetchPokemonList = async () => {
-      if (pokemonList.length > 0) return;
       setLoading(true);
+      if (pokemonList.length > 0) {
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await fetch(
           'https://pokeapi.co/api/v2/pokemon?limit=20',
