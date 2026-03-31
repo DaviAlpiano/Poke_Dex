@@ -1,11 +1,16 @@
-import './App.css';
+import { PokeProvider } from './contexts/PokeProvider.tsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home.tsx';
 
 function App() {
   return (
-    <>
-      <h1 className="text-5xl font-bold text-red-500">Teste</h1>
-    </>
+    <PokeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </PokeProvider>
   );
 }
-
 export default App;
