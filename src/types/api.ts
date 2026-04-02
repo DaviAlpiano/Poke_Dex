@@ -8,4 +8,5 @@ export type PokeContextType = {
 export type Pokemon = {
   name: string;
   url: string;
+  types: string[];
 };
