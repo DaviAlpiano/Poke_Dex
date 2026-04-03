@@ -3,6 +3,7 @@ export type PokeContextType = {
   loading: boolean;
   setPokemonList: (list: Pokemon[]) => void;
   setLoading: (value: boolean) => void;
+  loadMore: () => void;
 };
 
 export type Pokemon = {

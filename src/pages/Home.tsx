@@ -1,3 +1,4 @@
+import { LoadMoreButton } from '../components/LoadMoreButton';
 import PokeCard from '../components/PokeCard';
 import { usePoke } from '../contexts/usePoke';
 import type { Pokemon } from '../types/api';
@@ -11,6 +12,7 @@ export default function Home() {
           <PokeCard pokemon={pokemon} key={pokemon.name} />
         ))}
       </div>
+      <LoadMoreButton />
     </main>
   );
 }

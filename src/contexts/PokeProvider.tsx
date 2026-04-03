@@ -7,54 +7,64 @@ export function PokeProvider({ children }: { children: ReactNode }) {
     const cached = localStorage.getItem('@PokeSite:detailed_data');
     return cached ? JSON.parse(cached) : [];
   });
+  const [offset, setOffset] = useState(0);
 
   const [loading, setLoading] = useState(false);
   console.log(pokemonList);
 
-  useEffect(() => {
-    const fetchDetailedPokemonList = async () => {
-      if (pokemonList.length > 0) return;
+  const fetchPokemonList = async (currentOffset: number) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${currentOffset}`,
+      );
+      const data = await response.json();
+      console.log('fez fetch');
 
-      setLoading(true);
-      try {
-        const response = await fetch(
-          'https://pokeapi.co/api/v2/pokemon?limit=20',
-        );
-        const data = await response.json();
+      const detailedData = await Promise.all(
+        data.results.map(async (pokemon: any) => {
+          const res = await fetch(pokemon.url);
+          const details = await res.json();
+          return {
+            name: pokemon.name,
+            url: pokemon.url,
+            types: details.types.map((t: any) => t.type.name),
+          };
+        }),
+      );
 
-        const detailedData = await Promise.all(
-          data.results.map(async (pokemon: Pokemon) => {
-            const res = await fetch(pokemon.url);
-            const details = await res.json();
-
-            return {
-              name: pokemon.name,
-              url: pokemon.url,
-              types: details.types.map(
-                (typeInfo: { type: { name: string } }) => typeInfo.type.name,
-              ),
-            };
-          }),
-        );
-
-        setPokemonList(detailedData);
+      setPokemonList((prev) => {
+        const newList = [...prev, ...detailedData];
         localStorage.setItem(
           '@PokeSite:detailed_data',
-          JSON.stringify(detailedData),
+          JSON.stringify(newList),
         );
-      } catch (error) {
-        console.error('Error fetching detailed Pokémon list:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+        return newList;
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchDetailedPokemonList();
-  }, [pokemonList.length]);
+  const loadMore = () => {
+    const nextOffset = offset + 20;
+    setOffset(nextOffset);
+    fetchPokemonList(nextOffset);
+  };
+
+  useEffect(() => {
+    if (pokemonList.length === 0) {
+      fetchPokemonList(0);
+    } else {
+      setOffset(pokemonList.length);
+    }
+  }, []);
 
   return (
     <PokeContext.Provider
-      value={{ pokemonList, loading, setPokemonList, setLoading }}
+      value={{ pokemonList, loading, setPokemonList, setLoading, loadMore }}
     >
       {children}
     </PokeContext.Provider>
