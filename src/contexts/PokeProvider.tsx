@@ -7,6 +7,12 @@ export function PokeProvider({ children }: { children: ReactNode }) {
     const cached = localStorage.getItem('@PokeSite:detailed_data');
     return cached ? JSON.parse(cached) : [];
   });
+  const [pokemonListFavorite, setPokemonListFavorite] = useState<Pokemon[]>(
+    () => {
+      const cached = localStorage.getItem('@PokeSite:favorites');
+      return cached ? JSON.parse(cached) : [];
+    },
+  );
   const [offset, setOffset] = useState(0);
 
   const [loading, setLoading] = useState(false);
@@ -22,13 +28,15 @@ export function PokeProvider({ children }: { children: ReactNode }) {
       console.log('fez fetch');
 
       const detailedData = await Promise.all(
-        data.results.map(async (pokemon: any) => {
+        data.results.map(async (pokemon: Pokemon) => {
           const res = await fetch(pokemon.url);
           const details = await res.json();
           return {
             name: pokemon.name,
             url: pokemon.url,
-            types: details.types.map((t: any) => t.type.name),
+            types: details.types.map(
+              (t: { type: { name: string } }) => t.type.name,
+            ),
           };
         }),
       );
@@ -64,7 +72,15 @@ export function PokeProvider({ children }: { children: ReactNode }) {
 
   return (
     <PokeContext.Provider
-      value={{ pokemonList, loading, setPokemonList, setLoading, loadMore }}
+      value={{
+        pokemonList,
+        loading,
+        setPokemonList,
+        setLoading,
+        loadMore,
+        pokemonListFavorite,
+        setPokemonListFavorite,
+      }}
     >
       {children}
     </PokeContext.Provider>

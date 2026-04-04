@@ -51,7 +51,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
           loading="lazy"
         />
       </div>
-      <div className="flex gap-2 justify-center w-full">
+      <div className="flex gap-2 justify-center w-full items-center">
         {types.map((type) => (
           <div
             key={type}
@@ -67,6 +67,11 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
             </span>
           </div>
         ))}
+        <img
+          src="/pixelBallOpen.webp"
+          alt="pokeballopen"
+          className="w-7 h-7 animate-spin-slow"
+        />
       </div>
     </div>
   );
