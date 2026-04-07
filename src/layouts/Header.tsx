@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export function Header() {
   return (
     <header className="w-full bg-red-600 shadow-md sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo ou Título */}
         <div className="flex items-center gap-2">
           <img
             src="/pokebolaIcon.webp"
@@ -15,8 +14,6 @@ export function Header() {
             Poké<span className="text-yellow-400">Dex</span>
           </h1>
         </div>
-
-        {/* Links ou Busca (Futuro) */}
         <nav className="hidden sm:block">
           <ul className="flex gap-6 text-white font-bold">
             <li>

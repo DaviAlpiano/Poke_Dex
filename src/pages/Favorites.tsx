@@ -5,20 +5,26 @@ import type { Pokemon } from '../types/api';
 export default function Favorites() {
   const { pokemonListFavorite } = usePoke();
   return (
-    <main className="bg-[url('/fundo.png')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen p-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {pokemonListFavorite.length > 0 ? (
-          pokemonListFavorite.map((pokemon: Pokemon) => (
+    <main className="p-8">
+      {pokemonListFavorite.length > 0 ? (
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {pokemonListFavorite.map((pokemon: Pokemon) => (
             <PokeCard pokemon={pokemon} key={pokemon.name} />
-          ))
-        ) : (
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center min-h-[60vh]  bg-black/40 rounded-lg">
           <img
             src="/noFavorites.png"
             alt="Nenhum Pokémon favorito encontrado"
-            className="mx-auto mt-20 w-64 opacity-75"
+            className="w-64 opacity-75 animate-pulse"
           />
-        )}
-      </div>
+          <p className="text-white font-bold mt-4 text-xl">
+            Sua lista de favoritos está
+            <span className="text-yellow-400"> vazia!</span>
+          </p>
+        </div>
+      )}
     </main>
   );
 }

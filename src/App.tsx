@@ -8,11 +8,15 @@ function App() {
   return (
     <PokeProvider>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-        </Routes>
+        <div className="flex flex-col min-h-screen overflow-x-hidden bg-[url('/fundo.png')] bg-cover bg-center bg-no-repeat bg-fixed">
+          <Header />
+          <div className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/favorites" element={<Favorites />} />
+            </Routes>
+          </div>
+        </div>
       </BrowserRouter>
     </PokeProvider>
   );
