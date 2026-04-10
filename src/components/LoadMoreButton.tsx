@@ -5,7 +5,7 @@ export function LoadMoreButton() {
   const { loadMore, loading } = useContext(PokeContext);
 
   return (
-    <div className="flex justify-center pb-12"> 
+    <div className="flex justify-center pb-12">
       <button
         onClick={loadMore}
         disabled={loading}

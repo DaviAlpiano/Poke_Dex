@@ -1,7 +1,8 @@
 import type { Pokemon } from '../types/api';
+import { PokeFavoriteButton } from './PokeFavoriteButton';
 
 export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
-  const { name, url, types } = pokemon;
+  const { name, url, id, types } = pokemon;
   const typeColors: Record<string, string> = {
     grass: 'bg-green-500',
     fire: 'bg-red-500',
@@ -39,13 +40,13 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
       </h2>
       <div className="relative w-full h-48 flex items-center justify-center bg-slate-50/50 rounded-2xl p-2 mb-4 overflow-hidden">
         <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${url.split('/')[6]}.png`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
           alt={`Imagem padrão do Pokémon ${name}`}
           className="absolute max-h-full max-w-full object-contain transition-opacity duration-300 ease-in-out group-hover:opacity-0"
           loading="lazy"
         />
         <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${url.split('/')[6]}.gif`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`}
           alt={`Imagem de hover do Pokémon ${name}`}
           className="absolute max-h-full max-w-full object-contain transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:scale-150 group-hover:-translate-y-2"
           loading="lazy"
@@ -67,11 +68,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
             </span>
           </div>
         ))}
-        <img
-          src="/pixelBallOpen.webp"
-          alt="pokeballopen"
-          className="w-7 h-7 animate-spin-slow"
-        />
+        <PokeFavoriteButton id={id} />
       </div>
     </div>
   );

@@ -20,6 +20,7 @@ export default {
       },
       animation: {
         'pulse-slow': 'pulseSlow 3s ease-in-out infinite',
+        'spin-slow': 'spin 2s linear infinite',
       }
     },
   },
