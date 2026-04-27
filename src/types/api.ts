@@ -6,6 +6,10 @@ export type PokeContextType = {
   setPokemonListFavorite: (list: number[]) => void;
   setLoading: (value: boolean) => void;
   loadMore: () => void;
+  typeFilter: string;
+  setTypeFilter: (type: string) => void;
+  typeFilterOn: boolean;
+  setTypeFilterOn: (value: boolean) => void;
 };
 
 export type Pokemon = {

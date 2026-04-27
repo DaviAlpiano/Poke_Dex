@@ -34,7 +34,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
           loading="lazy"
         />
       </div>
-      <div className="flex gap-2 justify-center w-full items-center">
+      <div className="flex gap-1 justify-center w-full items-center">
         {types.map((type) => (
           <div
             key={type}
@@ -45,9 +45,6 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
               alt={type}
               className="w-10 h-10 object-contain"
             />
-            <span className="text-white text-xs font-bold capitalize ml-1">
-              {type}
-            </span>
           </div>
         ))}
         <PokeFavoriteButton id={id} />

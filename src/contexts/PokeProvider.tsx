@@ -18,6 +18,9 @@ export function PokeProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(false);
   console.log(pokemonList);
 
+  const [typeFilter, setTypeFilter] = useState('');
+  const [typeFilterOn, setTypeFilterOn] = useState(false);
+
   const fetchPokemonList = async (currentOffset: number) => {
     setLoading(true);
     try {
@@ -86,6 +89,10 @@ export function PokeProvider({ children }: { children: ReactNode }) {
         loadMore,
         pokemonListFavorite,
         setPokemonListFavorite,
+        typeFilter,
+        setTypeFilter,
+        typeFilterOn,
+        setTypeFilterOn,
       }}
     >
       {children}
