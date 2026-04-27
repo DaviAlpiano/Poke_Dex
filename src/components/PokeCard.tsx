@@ -17,8 +17,8 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
     cursor-pointer
     ${cardColor}`}
     >
-      <h2 className="bg-red-600 text-white px-4 py-1 rounded-full text-lg sm:text-xl font-extrabold capitalize tracking-tight mb-4 inline-block shadow-sm">
-        {name + ' Nº ' + url.split('/')[6]}
+      <h2 className="bg-red-600 text-white px-4 py-1 rounded-full text-lg sm:text-xl font-extrabold capitalize tracking-tight mb-4 inline-block shadow-sm truncate">
+        {name + ' Nº ' + id}
       </h2>
       <div className="relative w-full h-48 flex items-center justify-center bg-slate-50/50 rounded-2xl p-2 mb-4 overflow-hidden">
         <img
@@ -34,11 +34,11 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
           loading="lazy"
         />
       </div>
-      <div className="flex gap-1 justify-center w-full items-center">
+      <div className="flex gap-2 justify-center w-full items-center">
         {types.map((type) => (
           <div
             key={type}
-            className="flex items-center bg-white/20 rounded-full p-1 pr-3 shadow-sm"
+            className="flex items-center bg-white/20 rounded-full p-1 shadow-sm truncate"
           >
             <img
               src={`/pokeTypes/${type}.webp`}
