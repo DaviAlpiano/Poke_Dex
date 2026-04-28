@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SearchBar from '../components/SearchBar';
 
 export function Header() {
   return (
@@ -14,6 +15,7 @@ export function Header() {
             Poké<span className="text-yellow-400">Dex</span>
           </h1>
         </div>
+        <SearchBar />
         <nav className="hidden sm:block">
           <ul className="flex gap-6 text-white font-bold">
             <li>

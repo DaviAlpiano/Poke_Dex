@@ -5,7 +5,6 @@ import { pokemonTypes, typeColors } from '../utils/typeData';
 export default function TypeFilters() {
   const { typeFilter, setTypeFilter, setTypeFilterOn } = usePoke();
 
-  // Estado para controlar se o menu está aberto
   const [isOpen, setIsOpen] = useState(false);
 
   const newTypeFilter = (type: string) => {

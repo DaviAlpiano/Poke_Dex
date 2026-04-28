@@ -3,7 +3,7 @@ import { typeColors } from '../utils/typeData';
 import { PokeFavoriteButton } from './PokeFavoriteButton';
 
 export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
-  const { name, url, id, types } = pokemon;
+  const { name, id, types } = pokemon;
   const mainType = pokemon.types?.[0] || 'normal';
   const cardColor = typeColors[mainType] || 'bg-slate-200';
 
