@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home.tsx';
 import { Header } from './layouts/Header.tsx';
 import Favorites from './pages/Favorites.tsx';
+import { Footer } from './layouts/Footer.tsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Route path="/favorites" element={<Favorites />} />
             </Routes>
           </div>
+          <Footer />
         </div>
       </BrowserRouter>
     </PokeProvider>
