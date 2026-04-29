@@ -16,7 +16,6 @@ export function PokeProvider({ children }: { children: ReactNode }) {
   const [offset, setOffset] = useState(0);
 
   const [loading, setLoading] = useState(false);
-  console.log(pokemonList);
 
   const [typeFilter, setTypeFilter] = useState('');
   const [typeFilterOn, setTypeFilterOn] = useState(false);

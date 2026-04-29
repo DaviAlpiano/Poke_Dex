@@ -1,9 +1,10 @@
 import { PokeProvider } from './contexts/PokeProvider.tsx';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home.tsx';
 import { Header } from './layouts/Header.tsx';
 import Favorites from './pages/Favorites.tsx';
 import { Footer } from './layouts/Footer.tsx';
+import PokemonProfile from './pages/PokemonProfile.tsx';
 
 function App() {
   return (
@@ -13,8 +14,13 @@ function App() {
           <Header />
           <div className="flex-1">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/" element={<Navigate to="/pokedex" replace />} />
+              <Route path="/pokedex" element={<Home />} />
+              <Route path="/pokedex/favorites" element={<Favorites />} />
+              <Route
+                path="/pokedex/pokemon/:name"
+                element={<PokemonProfile />}
+              />
             </Routes>
           </div>
           <Footer />

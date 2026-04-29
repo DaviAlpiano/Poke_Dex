@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Pokemon } from '../types/api';
 import { typeColors } from '../utils/typeData';
 import { PokeFavoriteButton } from './PokeFavoriteButton';
@@ -21,18 +22,23 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
         {name + ' Nº ' + id}
       </h2>
       <div className="relative w-full h-48 flex items-center justify-center bg-slate-50/50 rounded-2xl p-2 mb-4 overflow-hidden">
-        <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-          alt={`Imagem padrão do Pokémon ${name}`}
-          className="absolute max-h-full max-w-full object-contain transition-opacity duration-300 ease-in-out group-hover:opacity-0"
-          loading="lazy"
-        />
-        <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`}
-          alt={`Imagem de hover do Pokémon ${name}`}
-          className="absolute max-h-full max-w-full object-contain transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:scale-150 group-hover:-translate-y-2"
-          loading="lazy"
-        />
+        <Link
+          to={`/pokedex/pokemon/${name.toLocaleLowerCase()}`}
+          className="absolute w-full h-full flex items-center justify-center"
+        >
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+            alt={`Imagem padrão do Pokémon ${name}`}
+            className="absolute max-h-full max-w-full object-contain transition-opacity duration-300 ease-in-out group-hover:opacity-0"
+            loading="lazy"
+          />
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`}
+            alt={`Imagem de hover do Pokémon ${name}`}
+            className="absolute max-h-full max-w-full object-contain transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:scale-150 group-hover:-translate-y-2"
+            loading="lazy"
+          />
+        </Link>
       </div>
       <div className="flex gap-2 justify-center w-full items-center">
         {types.map((type) => (

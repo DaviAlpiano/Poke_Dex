@@ -18,4 +18,24 @@ export const typeColors: Record<string, string> = {
   flying: 'bg-sky-400',
 };
 
+export const typeColors30: Record<string, string> = {
+  grass: 'bg-green-500/30',
+  fire: 'bg-red-500/30',
+  water: 'bg-blue-500/30',
+  bug: 'bg-lime-600/30',
+  normal: 'bg-slate-400/30',
+  poison: 'bg-purple-500/30',
+  electric: 'bg-yellow-400/30',
+  ground: 'bg-amber-700/30',
+  fairy: 'bg-pink-300/30',
+  fighting: 'bg-orange-700/30',
+  psychic: 'bg-pink-500/30',
+  rock: 'bg-stone-500/30',
+  ghost: 'bg-indigo-700/30',
+  ice: 'bg-cyan-300/30',
+  dragon: 'bg-violet-600/30',
+  steel: 'bg-zinc-400/30',
+  flying: 'bg-sky-400/30',
+};
+
 export const pokemonTypes = Object.keys(typeColors);
