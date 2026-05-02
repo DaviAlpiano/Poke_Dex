@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <div className="flex flex-col min-h-screen overflow-x-hidden bg-[url('/fundo.png')] bg-cover bg-center bg-no-repeat bg-fixed">
           <Header />
-          <div className="flex-1">
+          <main className="flex-1">
             <Routes>
               <Route path="/" element={<Navigate to="/pokedex" replace />} />
               <Route path="/pokedex" element={<Home />} />
@@ -22,7 +22,7 @@ function App() {
                 element={<PokemonProfile />}
               />
             </Routes>
-          </div>
+          </main>
           <Footer />
         </div>
       </BrowserRouter>

@@ -33,25 +33,46 @@ export default function PokemonProfile() {
     getPokemonDetails();
   }, [name]);
 
-  const cardColor = typeColors30[pokemon?.types[0]?.type.name] || 'bg-slate-200';
+  const cardColor =
+    typeColors30[pokemon?.types[0]?.type.name] || 'bg-slate-200';
 
   if (loading)
     return (
-      <div className="text-white text-center mt-20">
-        Buscando dados na PokéAPI...
+      <div className="p-8">
+        <div className="flex flex-col items-center justify-center min-h-[60vh]  bg-black/40 rounded-lg">
+          <img
+            src="/pikachuRunning.gif"
+            alt="Nenhum Pokémon favorito encontrado"
+            className="w-64 opacity-75"
+          />
+          <p className="text-white font-bold mt-4 text-xl">
+            Buscando dados na
+            <span className="text-yellow-400"> PokeAPI!</span>
+          </p>
+        </div>
       </div>
     );
   if (error)
     return (
-      <div className="text-white text-center mt-20">
-        Pokémon não encontrado!
+      <div className="p-8">
+        <div className="flex flex-col items-center justify-center min-h-[60vh]  bg-black/40 rounded-lg">
+          <img
+            src="/noFavorites.png"
+            alt="Nenhum Pokémon favorito encontrado"
+            className="w-64 opacity-75 animate-pulse"
+          />
+          <p className="text-white font-bold mt-4 text-xl">
+            Pokémon não
+            <span className="text-yellow-400"> encontrado!</span>
+          </p>
+        </div>
       </div>
     );
 
   console.log(cardColor);
 
   return (
-    <main className="p-4 md:p-8 flex flex-col items-center">
+    <div className="p-4 md:p-8 flex flex-col items-center">
       <div
         className={`w-full max-w-4xl ${cardColor} backdrop-blur-xl rounded-3xl p-8 border border-white/30 shadow-2xl flex flex-col md:flex-row gap-10`}
       >
@@ -108,6 +129,6 @@ export default function PokemonProfile() {
           </section>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
