@@ -7,9 +7,9 @@ export function PokeProvider({ children }: { children: ReactNode }) {
     const cached = localStorage.getItem('@PokeSite:detailed_data');
     return cached ? JSON.parse(cached) : [];
   });
-  const [pokemonListFavorite, setPokemonListFavorite] = useState<number[]>(
+  const [pokemonListFavorite, setPokemonListFavorite] = useState<Pokemon[]>(
     () => {
-      const cached = localStorage.getItem('@PokeSite:favorites_ids');
+      const cached = localStorage.getItem('@PokeSite:favorites_data');
       return cached ? JSON.parse(cached) : [];
     },
   );
@@ -31,6 +31,9 @@ export function PokeProvider({ children }: { children: ReactNode }) {
 
       const detailedData = await Promise.all(
         data.results.map(async (pokemon: Pokemon) => {
+          if (!pokemon.url) {
+            return pokemon;
+          }
           const res = await fetch(pokemon.url);
           const details = await res.json();
           return {
@@ -45,16 +48,20 @@ export function PokeProvider({ children }: { children: ReactNode }) {
       );
 
       setPokemonList((prev) => {
+        if (prev.length === 0) {
+          localStorage.setItem(
+            '@PokeSite:detailed_data',
+            JSON.stringify(detailedData),
+          );
+          return detailedData;
+        }
+
         const onlyNewPokemons = detailedData.filter(
           (newPoke) => !prev.some((oldPoke) => oldPoke.id === newPoke.id),
         );
 
         const newList = [...prev, ...onlyNewPokemons];
 
-        localStorage.setItem(
-          '@PokeSite:detailed_data',
-          JSON.stringify(newList),
-        );
         return newList;
       });
     } catch (error) {

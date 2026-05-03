@@ -3,16 +3,14 @@ import { usePoke } from '../contexts/usePoke';
 import type { Pokemon } from '../types/api';
 
 export default function Favorites() {
-  const { pokemonList, pokemonListFavorite } = usePoke();
+  const { pokemonListFavorite } = usePoke();
   return (
     <div className="p-8">
       {pokemonListFavorite.length > 0 ? (
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {pokemonList.map((pokemon: Pokemon) =>
-            pokemonListFavorite.includes(pokemon.id) ? (
-              <PokeCard pokemon={pokemon} key={pokemon.id} />
-            ) : null,
-          )}
+          {pokemonListFavorite.map((pokemon: Pokemon) => {
+            return <PokeCard pokemon={pokemon} key={pokemon.id} />;
+          })}
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center min-h-[60vh]  bg-black/40 rounded-lg">

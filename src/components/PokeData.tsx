@@ -65,7 +65,7 @@ export function PokeData({ pokemon }: { pokemon: FilteredPokemon }) {
             {type}
           </span>
         ))}
-        <PokeFavoriteButton id={pokemon.id} />
+        <PokeFavoriteButton pokemon={pokemon} />
       </div>
     </div>
   );

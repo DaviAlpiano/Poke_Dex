@@ -53,7 +53,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
             />
           </div>
         ))}
-        <PokeFavoriteButton id={id} />
+        <PokeFavoriteButton pokemon={pokemon} />
       </div>
     </div>
   );

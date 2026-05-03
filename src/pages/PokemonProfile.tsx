@@ -3,8 +3,23 @@ import { useParams } from 'react-router-dom';
 import { typeColors30 } from '../utils/typeData';
 import { EvolutionChain } from '../components/EvolutionChain';
 import { PokeData } from '../components/PokeData';
-import type { EvolutionData, FilteredPokemon } from '../types/api';
+import type {
+  EvolutionData,
+  FilteredPokemon,
+  VariationData,
+} from '../types/api';
 import { PokeStats } from '../components/Pokestats';
+import { PokeVariations } from '../components/PokeVariations';
+
+interface VarietyPokemon {
+  name: string;
+  url: string;
+}
+
+interface VarietyEntry {
+  is_default: boolean;
+  pokemon: VarietyPokemon;
+}
 
 export default function PokemonProfile() {
   const { name } = useParams();
@@ -18,6 +33,7 @@ export default function PokemonProfile() {
     speciesUrl: '',
   });
   const [evolutionData, setEvolutionData] = useState<EvolutionData[]>([]);
+  const [variations, setVariations] = useState<VariationData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -50,6 +66,21 @@ export default function PokemonProfile() {
 
         const speciesRes = await fetch(data.species.url);
         const speciesData = await speciesRes.json();
+
+        const otherVarieties = speciesData.varieties
+          .filter((v: VarietyEntry) => v.is_default === false)
+          .map((v: VarietyEntry) => {
+            const id = parseInt(
+              v.pokemon.url.split('/').filter(Boolean).pop() || '0',
+            );
+            return {
+              name: v.pokemon.name,
+              id: id,
+              image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
+            };
+          });
+
+        setVariations(otherVarieties);
 
         const evolutionRes = await fetch(speciesData.evolution_chain.url);
         const evolutionData = await evolutionRes.json();
@@ -125,6 +156,7 @@ export default function PokemonProfile() {
           <PokeStats pokemon={pokemon} />
         </div>
         {evolutionData && <EvolutionChain evolutionData={evolutionData} />}
+        {variations.length > 0 && <PokeVariations variations={variations} />}
       </div>
     </div>
   );

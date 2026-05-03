@@ -1,22 +1,30 @@
 import { useContext } from 'react';
 import PokeContext from '../contexts/PokeContext';
+import type { Pokemon } from '../types/api';
 
-export function PokeFavoriteButton({ id }: { id: number }) {
+export function PokeFavoriteButton({ pokemon }: { pokemon: Pokemon }) {
   const { pokemonListFavorite, setPokemonListFavorite } =
     useContext(PokeContext);
-  const isFavorite = pokemonListFavorite.includes(id);
+
+  const isFavorite = pokemonListFavorite.some(
+    (fav: Pokemon) => fav.id === pokemon.id,
+  );
 
   const handleChange = () => {
-    let newFavorites: number[] = [];
+    let newFavorites: Pokemon[] = [];
+
     if (isFavorite) {
-      newFavorites = pokemonListFavorite.filter((favId) => favId !== id);
+      newFavorites = pokemonListFavorite.filter(
+        (fav: Pokemon) => fav.id !== pokemon.id,
+      );
     } else {
-      newFavorites = [...pokemonListFavorite, id];
+      newFavorites = [...pokemonListFavorite, pokemon];
     }
 
     setPokemonListFavorite(newFavorites);
+
     localStorage.setItem(
-      '@PokeSite:favorites_ids',
+      '@PokeSite:favorites_data',
       JSON.stringify(newFavorites),
     );
   };

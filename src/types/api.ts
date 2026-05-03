@@ -1,9 +1,9 @@
 export type PokeContextType = {
   pokemonList: Pokemon[];
   loading: boolean;
-  pokemonListFavorite: number[];
+  pokemonListFavorite: Pokemon[];
   setPokemonList: (list: Pokemon[]) => void;
-  setPokemonListFavorite: (list: number[]) => void;
+  setPokemonListFavorite: (list: Pokemon[]) => void;
   setLoading: (value: boolean) => void;
   loadMore: () => void;
   typeFilter: string;
@@ -14,7 +14,7 @@ export type PokeContextType = {
 
 export type Pokemon = {
   name: string;
-  url: string;
+  url?: string;
   id: number;
   types: string[];
 };
@@ -32,6 +32,12 @@ export type FilteredPokemon = {
   weight: number;
   height: number;
   speciesUrl: string;
+};
+
+export type VariationData = {
+  name: string;
+  image: string;
+  id: string;
 };
 
 export type EvolutionData = {
