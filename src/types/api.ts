@@ -18,3 +18,24 @@ export type Pokemon = {
   id: number;
   types: string[];
 };
+
+export type PokemonStat = {
+  name: string;
+  value: number;
+};
+
+export type FilteredPokemon = {
+  id: number;
+  name: string;
+  types: string[];
+  stats: PokemonStat[];
+  weight: number;
+  height: number;
+  speciesUrl: string;
+};
+
+export type EvolutionData = {
+  name: string;
+  image: string;
+  id: string;
+};
