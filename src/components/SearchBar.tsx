@@ -23,6 +23,10 @@ export default function SearchBar() {
         <input
           type="text"
           value={query}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={() => {
+            setTimeout(() => setShowSuggestions(false), 200);
+          }}
           onChange={(e) => {
             setQuery(e.target.value);
             setShowSuggestions(true);
@@ -49,7 +53,7 @@ export default function SearchBar() {
               >
                 <span>{p.name.toUpperCase()}</span>
                 <span className="text-xs opacity-50">
-                  #0{p.url.split('/').slice(-2, -1)[0]}
+                  #{p.url.split('/').slice(-2, -1)[0].padStart(3, '0')}
                 </span>
               </li>
             ))
