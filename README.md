@@ -11,8 +11,7 @@ Front-end:
 ## Acessar o site
 
 
-> [Pokedex](https://davialpiano.github.io/Poke_Dex/)
-
+<a href="https://davialpiano.github.io/Poke_Dex/" target="_blank">Pokedex</a>
 
 ## Instalando Dependências
  
