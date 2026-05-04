@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
+import pokeLogo from '/public/pokebolaIcon.webp';
 
 export function Header() {
   return (
@@ -8,7 +9,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link to="/Poke_Dex" className="flex items-center gap-2">
             <img
-              src="pokebolaIcon.webp"
+              src={pokeLogo}
               alt="PokéDex Logo"
               className="w-8 h-8 animate-pulse"
             />

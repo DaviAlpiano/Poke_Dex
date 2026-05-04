@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import PokeContext from '../contexts/PokeContext';
 import type { Pokemon } from '../types/api';
+import pokePixelClose from '/public/pixelBallClose.webp';
+import pokePixelOpen from '/public/pixelBallOpen.webp';
 
 export function PokeFavoriteButton({ pokemon }: { pokemon: Pokemon }) {
   const { pokemonListFavorite, setPokemonListFavorite } =
@@ -32,7 +34,7 @@ export function PokeFavoriteButton({ pokemon }: { pokemon: Pokemon }) {
   return (
     <button onClick={handleChange} className="w-10 h-10">
       <img
-        src={isFavorite ? 'pixelBallClose.webp' : 'pixelBallOpen.webp'}
+        src={isFavorite ? pokePixelClose : pokePixelOpen}
         alt="Status Favorito"
         className={
           isFavorite
