@@ -18,7 +18,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
     cursor-pointer
     ${cardColor}`}
     >
-      <h2 className="bg-red-600 text-white px-4 py-1 rounded-full text-lg sm:text-xl font-extrabold capitalize tracking-tight mb-4 inline-block shadow-sm truncate">
+      <h2 className="w-full bg-red-600 text-white px-4 py-1 rounded-full text-lg sm:text-xl font-extrabold capitalize tracking-tight mb-4 shadow-sm truncate text-center">
         {name + ' Nº ' + id}
       </h2>
       <div className="relative w-full h-48 flex items-center justify-center bg-slate-50/50 rounded-2xl p-2 mb-4 overflow-hidden">
