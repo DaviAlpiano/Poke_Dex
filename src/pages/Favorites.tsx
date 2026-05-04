@@ -1,6 +1,7 @@
 import PokeCard from '../components/PokeCard';
 import { usePoke } from '../contexts/usePoke';
 import type { Pokemon } from '../types/api';
+import pikachuCry from '/public/noFavorites.png';
 
 export default function Favorites() {
   const { pokemonListFavorite } = usePoke();
@@ -15,7 +16,7 @@ export default function Favorites() {
       ) : (
         <div className="flex flex-col items-center justify-center min-h-[60vh]  bg-black/40 rounded-lg">
           <img
-            src="/noFavorites.png"
+            src={pikachuCry}
             alt="Nenhum Pokémon favorito encontrado"
             className="w-64 opacity-75 animate-pulse"
           />
