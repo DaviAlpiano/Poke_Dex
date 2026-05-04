@@ -8,7 +8,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link to="/Poke_Dex" className="flex items-center gap-2">
             <img
-              src="/pokebolaIcon.webp"
+              src="pokebolaIcon.webp"
               alt="PokéDex Logo"
               className="w-8 h-8 animate-pulse"
             />

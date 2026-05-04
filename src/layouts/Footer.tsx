@@ -6,7 +6,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col items-center md:items-start">
           <div className="flex items-center gap-2 mb-2">
-            <img src="/pokebolaIcon.webp" alt="Pokeball" className="w-6 h-6" />
+            <img src="pokebolaIcon.webp" alt="Pokeball" className="w-6 h-6" />
             <span className="text-white font-black uppercase tracking-widest text-sm">
               Poké<span className="text-yellow-400">Dex</span>
             </span>
