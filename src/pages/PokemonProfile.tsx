@@ -8,8 +8,9 @@ import type {
   FilteredPokemon,
   VariationData,
 } from '../types/api';
-import { PokeStats } from '../components/Pokestats';
+import { PokeStats } from '../components/PokeStats';
 import { PokeVariations } from '../components/PokeVariations';
+import { filteredEvolution } from '../utils/FilteredEvolution';
 
 interface VarietyPokemon {
   name: string;
@@ -84,20 +85,10 @@ export default function PokemonProfile() {
 
         const evolutionRes = await fetch(speciesData.evolution_chain.url);
         const evolutionData = await evolutionRes.json();
-        const list = [];
-        let currentStep = evolutionData.chain;
 
-        while (currentStep) {
-          const pokemonId = currentStep.species.url.split('/').slice(-2, -1)[0];
-          list.push({
-            name: currentStep.species.name,
-            id: pokemonId,
-            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`,
-          });
-          currentStep = currentStep.evolves_to[0];
-        }
+        const filteredEvolutionResponse = filteredEvolution(evolutionData);
 
-        setEvolutionData(list);
+        setEvolutionData(filteredEvolutionResponse);
       } catch (err) {
         console.log(err);
         setError(true);

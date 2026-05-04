@@ -13,7 +13,7 @@ export function EvolutionChain({
       <h2 className="text-white/70 font-bold uppercase tracking-widest mb-4">
         Evolution Chain
       </h2>
-      <div className="flex items-center justify-around p-4 rounded-2xl backdrop-blur-sm border border-white/30">
+      <div className="flex flex-wrap items-center justify-around p-4 rounded-2xl backdrop-blur-sm border border-white/30">
         {evolutionData.map((evo) => (
           <div key={evo.id} className="flex items-center">
             <div
