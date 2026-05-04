@@ -1,22 +1,67 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { typeColors30 } from '../utils/typeData';
 import { PokeFavoriteButton } from './PokeFavoriteButton';
-import { MdGif, MdImage } from 'react-icons/md';
+import { MdGif, MdImage, MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import type { FilteredPokemon } from '../types/api';
+import { pokeNames } from '../utils/pokeNames';
 
 export function PokeData({ pokemon }: { pokemon: FilteredPokemon }) {
   const [activeMedia, setActiveMedia] = useState<'png' | 'gif'>('png');
+  const navigate = useNavigate();
 
   const officialArtwork = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
   const officialShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${pokemon.id}.png`;
   const gifAnimated = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`;
   const gifShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/shiny/${pokemon.id}.gif`;
 
+  const handlePrevious = () => {
+    if (pokemon.id > 1) {
+      const prevId = pokemon.id - 1;
+      const prevPokemon = pokeNames.find(
+        (p) => p.url.split('/').slice(-2, -1)[0] === prevId.toString(),
+      );
+
+      if (prevPokemon) {
+        navigate(`/pokedex/pokemon/${prevPokemon.name.toLowerCase()}`);
+      }
+    }
+  };
+
+  const handleNext = () => {
+    const nextId = pokemon.id + 1;
+    const nextPokemon = pokeNames.find(
+      (p) => p.url.split('/').slice(-2, -1)[0] === nextId.toString(),
+    );
+
+    if (nextPokemon) {
+      navigate(`/pokedex/pokemon/${nextPokemon.name.toLowerCase()}`);
+    }
+  };
+
   return (
     <div className="flex-1 flex flex-col items-center">
-      <span className="text-white/50 font-black text-4xl self-start">
-        #{pokemon.id.toString().padStart(3, '0')}
-      </span>
+      <div className="flex items-center gap-2 self-start">
+        <button
+          onClick={handlePrevious}
+          disabled={pokemon.id === 1}
+          className="text-white/30 hover:text-white transition-colors disabled:opacity-0"
+        >
+          <MdChevronLeft size={32} />
+        </button>
+
+        <span className="text-white/50 font-black text-4xl">
+          #{pokemon.id.toString().padStart(3, '0')}
+        </span>
+
+        <button
+          onClick={handleNext}
+          className="text-white/30 hover:text-white transition-colors"
+        >
+          <MdChevronRight size={32} />
+        </button>
+      </div>
+
       <div className="relative w-64 h-64 mt-4 flex items-center justify-center group bg-white/10 rounded-3xl border border-white/20 shadow-lg">
         <img
           src={activeMedia === 'png' ? officialArtwork : gifAnimated}
@@ -32,7 +77,7 @@ export function PokeData({ pokemon }: { pokemon: FilteredPokemon }) {
           alt={`${pokemon.name} shiny`}
           className={`absolute transition-all duration-500 opacity-0 group-hover:opacity-100 ${
             activeMedia === 'png'
-              ? 'w-64 h-64 drop-shadow-[0_0_30px_rgba(255,215,0,0.6)]' // Brilho dourado para o Shiny
+              ? 'w-64 h-64 drop-shadow-[0_0_30px_rgba(255,215,0,0.6)]'
               : 'min-w-30 min-h-30 object-contain'
           }`}
         />
