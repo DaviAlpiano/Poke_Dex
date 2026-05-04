@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import type { Pokemon } from '../types/api';
 import { typeColors } from '../utils/typeData';
 import { PokeFavoriteButton } from './PokeFavoriteButton';
+import { typeIcons } from '../utils/typeIcons';
 
 export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
   const { name, id, types } = pokemon;
@@ -47,7 +48,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
             className="flex items-center bg-white/20 rounded-full p-1 shadow-sm truncate"
           >
             <img
-              src={`src/assets/pokeTypes/${type}.webp`}
+              src={typeIcons[type]}
               alt={type}
               className="w-10 h-10 object-contain"
             />

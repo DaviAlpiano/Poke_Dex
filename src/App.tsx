@@ -5,12 +5,16 @@ import { Header } from './layouts/Header.tsx';
 import Favorites from './pages/Favorites.tsx';
 import { Footer } from './layouts/Footer.tsx';
 import PokemonProfile from './pages/PokemonProfile.tsx';
+import fundoImg from './assets/fundo.png';
 
 function App() {
   return (
     <PokeProvider>
       <HashRouter>
-        <div className="flex flex-col min-h-screen bg-[url('src/assets/fundo.png')] bg-cover bg-center bg-no-repeat bg-fixed">
+        <div
+          className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+          style={{ backgroundImage: `url(${fundoImg})` }}
+        >
           <Header />
           <main className="flex-1">
             <Routes>
