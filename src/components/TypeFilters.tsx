@@ -18,7 +18,7 @@ export default function TypeFilters() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto mb-10 px-4">
+    <div className="sticky top-40 md:top-20 z-40 w-full max-w-5xl mx-auto mb-10 px-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full md:w-64 mx-auto bg-white/30 backdrop-blur-md p-4 rounded-2xl border border-white/40 shadow-lg transition-all active:scale-95 mb-4 text-white font-bold cursor-pointer"

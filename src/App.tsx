@@ -10,7 +10,7 @@ function App() {
   return (
     <PokeProvider>
       <HashRouter>
-        <div className="flex flex-col min-h-screen overflow-x-hidden bg-[url('/fundo.png')] bg-cover bg-center bg-no-repeat bg-fixed">
+        <div className="flex flex-col min-h-screen bg-[url('src/assets/fundo.png')] bg-cover bg-center bg-no-repeat bg-fixed">
           <Header />
           <main className="flex-1">
             <Routes>

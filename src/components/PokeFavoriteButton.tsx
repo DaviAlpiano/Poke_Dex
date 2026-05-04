@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import PokeContext from '../contexts/PokeContext';
 import type { Pokemon } from '../types/api';
-import pokePixelClose from '/public/pixelBallClose.webp';
-import pokePixelOpen from '/public/pixelBallOpen.webp';
+import pokePixelClose from '../assets/pixelBallClose.webp';
+import pokePixelOpen from '../assets/pixelBallOpen.webp';
 
 export function PokeFavoriteButton({ pokemon }: { pokemon: Pokemon }) {
   const { pokemonListFavorite, setPokemonListFavorite } =

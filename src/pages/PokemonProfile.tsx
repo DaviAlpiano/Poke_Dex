@@ -11,7 +11,7 @@ import type {
 import { PokeStats } from '../components/PokeStats';
 import { PokeVariations } from '../components/PokeVariations';
 import { filteredEvolution } from '../utils/filteredEvolution';
-import pikachu from '/public/pikachuRunning.gif';
+import pikachu from '../assets/pikachuRunning.gif';
 
 interface VarietyPokemon {
   name: string;

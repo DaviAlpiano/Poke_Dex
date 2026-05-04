@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
-import pokeLogo from '/public/pokebolaIcon.webp';
+import pokeLogo from '../assets/pokebolaIcon.webp';
 
 export function Header() {
   return (

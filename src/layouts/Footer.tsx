@@ -1,4 +1,4 @@
-import pokeLogo from '/public/pokebolaIcon.webp';
+import pokeLogo from '../assets/pokebolaIcon.webp';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();

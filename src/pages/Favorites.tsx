@@ -1,7 +1,7 @@
 import PokeCard from '../components/PokeCard';
 import { usePoke } from '../contexts/usePoke';
 import type { Pokemon } from '../types/api';
-import pikachuCry from '/public/noFavorites.png';
+import pikachuCry from '../assets/noFavorites.png';
 
 export default function Favorites() {
   const { pokemonListFavorite } = usePoke();
