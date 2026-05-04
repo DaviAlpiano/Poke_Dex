@@ -5,8 +5,8 @@ import pokeLogo from '/public/pokebolaIcon.webp';
 export function Header() {
   return (
     <header className="w-full bg-red-600 shadow-md sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center gap-2">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="w-full md:w-auto flex justify-between items-center">
           <Link to="/Poke_Dex" className="flex items-center gap-2">
             <img
               src={pokeLogo}
@@ -17,14 +17,24 @@ export function Header() {
               Poké<span className="text-yellow-400">Dex</span>
             </h1>
           </Link>
+          <nav className="md:hidden">
+            <Link
+              to="/Poke_Dex/favorites"
+              className="text-white text-sm font-bold bg-white/10 px-3 py-1 rounded-full"
+            >
+              ★ Favs
+            </Link>
+          </nav>
         </div>
-        <SearchBar />
-        <nav className="hidden sm:block">
+        <div className="w-full md:max-w-xs lg:max-w-md">
+          <SearchBar />
+        </div>
+        <nav className="hidden md:block">
           <ul className="flex gap-6 text-white font-bold">
             <li>
               <Link
                 to="/Poke_Dex"
-                className="text-white font-bold hover:text-yellow-400 transition-colors"
+                className="hover:text-yellow-400 transition-colors"
               >
                 Home
               </Link>
@@ -32,7 +42,7 @@ export function Header() {
             <li>
               <Link
                 to="/Poke_Dex/favorites"
-                className="text-white font-bold hover:text-yellow-400 transition-colors"
+                className="hover:text-yellow-400 transition-colors"
               >
                 Favorites
               </Link>
