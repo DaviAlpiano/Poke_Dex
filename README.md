@@ -27,5 +27,13 @@ npm install
     npm start
   ```
 
-![img](ghibli.png)
+## Prints do site
+
+* Home:
+
+![Home](./public/git/siteHome.png)
+
+* Profile:
+
+![Home](./public/git/siteProfile.png)
 

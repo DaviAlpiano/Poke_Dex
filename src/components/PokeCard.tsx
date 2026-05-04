@@ -47,7 +47,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
             className="flex items-center bg-white/20 rounded-full p-1 shadow-sm truncate"
           >
             <img
-              src={`/pokeTypes/${type}.webp`}
+              src={`pokeTypes/${type}.webp`}
               alt={type}
               className="w-10 h-10 object-contain"
             />

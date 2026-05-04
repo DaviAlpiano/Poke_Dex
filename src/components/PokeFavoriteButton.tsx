@@ -32,7 +32,7 @@ export function PokeFavoriteButton({ pokemon }: { pokemon: Pokemon }) {
   return (
     <button onClick={handleChange} className="w-10 h-10">
       <img
-        src={isFavorite ? '/pixelBallClose.webp' : '/pixelBallOpen.webp'}
+        src={isFavorite ? 'pixelBallClose.webp' : 'pixelBallOpen.webp'}
         alt="Status Favorito"
         className={
           isFavorite
