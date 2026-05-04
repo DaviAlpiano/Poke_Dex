@@ -16,6 +16,7 @@ export const typeColors: Record<string, string> = {
   dragon: 'bg-violet-600',
   steel: 'bg-zinc-400',
   flying: 'bg-sky-400',
+  dark: 'bg-zinc-800',
 };
 
 export const typeColors30: Record<string, string> = {
@@ -36,6 +37,7 @@ export const typeColors30: Record<string, string> = {
   dragon: 'bg-violet-600/30',
   steel: 'bg-zinc-400/30',
   flying: 'bg-sky-400/30',
+  dark: 'bg-zinc-800/30',
 };
 
 export const pokemonTypes = Object.keys(typeColors);
