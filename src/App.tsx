@@ -14,11 +14,11 @@ function App() {
           <Header />
           <main className="flex-1">
             <Routes>
-              <Route path="/" element={<Navigate to="/pokedex" replace />} />
-              <Route path="/pokedex" element={<Home />} />
-              <Route path="/pokedex/favorites" element={<Favorites />} />
+              <Route path="/" element={<Navigate to="/Poke_Dex" replace />} />
+              <Route path="/Poke_Dex" element={<Home />} />
+              <Route path="/Poke_Dex/favorites" element={<Favorites />} />
               <Route
-                path="/pokedex/pokemon/:name"
+                path="/Poke_Dex/pokemon/:name"
                 element={<PokemonProfile />}
               />
             </Routes>

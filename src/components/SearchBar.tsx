@@ -14,7 +14,7 @@ export default function SearchBar() {
   const handleSelect = (name: string) => {
     setQuery('');
     setShowSuggestions(false);
-    navigate(`/pokedex/pokemon/${name}`);
+    navigate(`/Poke_Dex/pokemon/${name}`);
   };
 
   return (

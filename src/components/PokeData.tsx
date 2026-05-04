@@ -23,7 +23,7 @@ export function PokeData({ pokemon }: { pokemon: FilteredPokemon }) {
       );
 
       if (prevPokemon) {
-        navigate(`/pokedex/pokemon/${prevPokemon.name.toLowerCase()}`);
+        navigate(`/Poke_Dex/pokemon/${prevPokemon.name.toLowerCase()}`);
       }
     }
   };
@@ -35,7 +35,7 @@ export function PokeData({ pokemon }: { pokemon: FilteredPokemon }) {
     );
 
     if (nextPokemon) {
-      navigate(`/pokedex/pokemon/${nextPokemon.name.toLowerCase()}`);
+      navigate(`/Poke_Dex/pokemon/${nextPokemon.name.toLowerCase()}`);
     }
   };
 

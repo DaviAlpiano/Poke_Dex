@@ -23,7 +23,7 @@ export default function PokeCard({ pokemon }: { pokemon: Pokemon }) {
       </h2>
       <div className="relative w-full h-48 flex items-center justify-center bg-slate-50/50 rounded-2xl p-2 mb-4 overflow-hidden">
         <Link
-          to={`/pokedex/pokemon/${name.toLocaleLowerCase()}`}
+          to={`/Poke_Dex/pokemon/${name.toLocaleLowerCase()}`}
           className="absolute w-full h-full flex items-center justify-center"
         >
           <img

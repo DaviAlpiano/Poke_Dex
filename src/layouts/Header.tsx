@@ -6,7 +6,7 @@ export function Header() {
     <header className="w-full bg-red-600 shadow-md sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Link to="/pokedex" className="flex items-center gap-2">
+          <Link to="/Poke_Dex" className="flex items-center gap-2">
             <img
               src="/pokebolaIcon.webp"
               alt="PokéDex Logo"
@@ -22,7 +22,7 @@ export function Header() {
           <ul className="flex gap-6 text-white font-bold">
             <li>
               <Link
-                to="/pokedex"
+                to="/Poke_Dex"
                 className="text-white font-bold hover:text-yellow-400 transition-colors"
               >
                 Home
@@ -30,7 +30,7 @@ export function Header() {
             </li>
             <li>
               <Link
-                to="/pokedex/favorites"
+                to="/Poke_Dex/favorites"
                 className="text-white font-bold hover:text-yellow-400 transition-colors"
               >
                 Favorites

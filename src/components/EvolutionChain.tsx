@@ -18,7 +18,7 @@ export function EvolutionChain({
           <div key={evo.id} className="flex items-center">
             <div
               className="flex flex-col items-center group cursor-pointer transition-transform hover:scale-110"
-              onClick={() => navigate(`/pokedex/pokemon/${evo.name}`)}
+              onClick={() => navigate(`/Poke_Dex/pokemon/${evo.name}`)}
             >
               <div className=" bg-white/10 rounded-full flex items-center p-5 justify-center group-hover:bg-white/20 border border-white/5">
                 <img
