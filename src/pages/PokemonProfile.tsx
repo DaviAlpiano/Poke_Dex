@@ -45,6 +45,8 @@ export default function PokemonProfile() {
         setLoading(true);
         setError(false);
 
+        const minTime = new Promise((resolve) => setTimeout(resolve, 500));
+
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${name?.toLowerCase()}`,
         );
@@ -88,6 +90,9 @@ export default function PokemonProfile() {
         const evolutionData = await evolutionRes.json();
 
         const filteredEvolutionResponse = filteredEvolution(evolutionData);
+
+        await Promise.all([response, minTime, evolutionRes, speciesRes]);
+        window.scrollTo(0, 0);
 
         setEvolutionData(filteredEvolutionResponse);
       } catch (err) {
