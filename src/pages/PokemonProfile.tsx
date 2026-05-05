@@ -12,6 +12,7 @@ import { PokeStats } from '../components/PokeStats';
 import { PokeVariations } from '../components/PokeVariations';
 import { filteredEvolution } from '../utils/filteredEvolution';
 import pikachu from '../assets/pikachuRunning.gif';
+import pikachuCry from '../assets/noFavorites.png';
 
 interface VarietyPokemon {
   name: string;
@@ -114,7 +115,7 @@ export default function PokemonProfile() {
         <div className="flex flex-col items-center justify-center min-h-[60vh]  bg-black/40 rounded-lg">
           <img
             src={pikachu}
-            alt="Nenhum Pokémon favorito encontrado"
+            alt="Pikachu correndo"
             className="w-64 opacity-75"
           />
           <p className="text-white font-bold mt-4 text-xl">
@@ -129,8 +130,8 @@ export default function PokemonProfile() {
       <div className="p-8">
         <div className="flex flex-col items-center justify-center min-h-[60vh]  bg-black/40 rounded-lg">
           <img
-            src="/noFavorites.png"
-            alt="Nenhum Pokémon favorito encontrado"
+            src={pikachuCry}
+            alt="Nenhum Pokémon encontrado"
             className="w-64 opacity-75 animate-pulse"
           />
           <p className="text-white font-bold mt-4 text-xl">

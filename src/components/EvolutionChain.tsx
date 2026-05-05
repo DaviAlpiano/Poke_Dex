@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import type { EvolutionData } from '../types/api';
+import { pokeNames } from '../utils/pokeNames';
 
 export function EvolutionChain({
   evolutionData,
@@ -7,6 +8,18 @@ export function EvolutionChain({
   evolutionData: EvolutionData[];
 }) {
   const navigate = useNavigate();
+
+  const handleNext = (pokemon: EvolutionData) => {
+    const nextId = pokemon.id;
+    const nextPokemon = pokeNames.find((p) => {
+      const id = p.url.split('/').slice(-2, -1)[0];
+      return id === nextId.toString();
+    });
+
+    if (nextPokemon) {
+      navigate(`/Poke_Dex/pokemon/${nextPokemon.name.toLowerCase()}`);
+    }
+  };
 
   return (
     <section className="mt-6">
@@ -18,7 +31,7 @@ export function EvolutionChain({
           <div key={evo.id} className="flex items-center">
             <div
               className="flex flex-col items-center group cursor-pointer transition-transform hover:scale-110"
-              onClick={() => navigate(`/Poke_Dex/pokemon/${evo.name}`)}
+              onClick={() => handleNext(evo)}
             >
               <div className=" bg-white/10 rounded-full flex items-center p-5 justify-center group-hover:bg-white/20 border border-white/5">
                 <img
